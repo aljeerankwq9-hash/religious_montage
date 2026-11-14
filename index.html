@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>بلقن مونتاج الفيديوهات الدينية — أسامة الجيران</title>
+<meta name="description" content="بلقن Claude لمونتاج المحاضرات والدروس والكلمات الدينية: تفريغ بتوقيت الكلمة، قص السكتات، صيد المقاطع، قص عمودي، زوم على التأكيد، تنقية الصوت، تحويل الصوت لفيديو بـ١٦ ثيم، وباقة نشر.">
+<meta property="og:title" content="بلقن مونتاج الفيديوهات الدينية">
+<meta property="og:description" content="من المحاضرة الخام إلى الريل الجاهز — داخل Claude.">
+<meta property="og:image" content="img/themes.jpg">
+<meta name="theme-color" content="#0B1F3A">
+<style>
+@font-face{font-family:Tajawal;font-weight:700;src:url(fonts/Tajawal-Bold.ttf) format("truetype");font-display:swap}
+@font-face{font-family:Tajawal;font-weight:900;src:url(fonts/Tajawal-Black.ttf) format("truetype");font-display:swap}
+:root{--bg:#0B1F3A;--bg2:#132C52;--gold:#D4AF37;--gold2:#F1D27A;--text:#fff;--muted:#C9D3E3;--card:rgba(255,255,255,.05);--line:rgba(212,175,55,.28)}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:Tajawal,system-ui,-apple-system,"Segoe UI",sans-serif;font-weight:700;background:var(--bg);color:var(--text);line-height:1.8;font-size:17px;
+background-image:radial-gradient(1200px 600px at 50% -10%,var(--bg2),transparent 70%)}
+a{color:var(--gold2)}
+.wrap{max-width:980px;margin:0 auto;padding:0 20px}
+header.hero{text-align:center;padding:72px 0 48px}
+.badge{display:inline-block;border:1px solid var(--line);color:var(--gold2);border-radius:999px;padding:4px 16px;font-size:14px;margin-bottom:20px}
+h1{font-weight:900;font-size:clamp(32px,6vw,54px);line-height:1.3;color:var(--gold)}
+.sub{color:var(--muted);max-width:640px;margin:16px auto 0;font-size:19px}
+.cta{display:inline-flex;align-items:center;gap:10px;margin-top:32px;background:linear-gradient(135deg,var(--gold),var(--gold2));color:#0B1F3A;text-decoration:none;font-weight:900;padding:14px 34px;border-radius:14px;font-size:19px;box-shadow:0 8px 30px rgba(212,175,55,.25);transition:transform .15s}
+.cta:hover{transform:translateY(-2px)}
+.meta{margin-top:14px;color:var(--muted);font-size:14px}
+section{padding:44px 0;border-top:1px solid rgba(255,255,255,.06)}
+h2{font-weight:900;font-size:clamp(24px,4vw,32px);color:var(--gold);margin-bottom:8px}
+.lead{color:var(--muted);margin-bottom:26px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:20px 22px}
+.card h3{font-weight:900;font-size:19px;color:var(--gold2);margin-bottom:4px}
+.card p{color:var(--muted);font-size:16px;line-height:1.7}
+.card .say{display:block;margin-top:10px;font-size:14px;color:#9fb0cb}
+.card .say::before{content:"قله: ";color:var(--gold)}
+.flow{display:flex;flex-wrap:wrap;gap:8px;align-items:center;justify-content:center;margin-top:8px}
+.flow span{background:var(--card);border:1px solid var(--line);border-radius:999px;padding:6px 16px;font-size:15px}
+.flow i{color:var(--gold);font-style:normal}
+.gallery{display:flex;gap:28px;align-items:center;flex-wrap:wrap}
+.gallery img{width:min(100%,360px);border-radius:18px;border:1px solid var(--line);margin:0 auto;display:block}
+.gallery ul{flex:1;min-width:260px;list-style:none;color:var(--muted)}
+.gallery li{padding:6px 0;border-bottom:1px dashed rgba(255,255,255,.08)}
+.gallery li b{color:var(--gold2)}
+ol.steps{counter-reset:s;list-style:none;display:grid;gap:12px}
+ol.steps li{counter-increment:s;background:var(--card);border:1px solid var(--line);border-radius:16px;padding:14px 20px 14px 20px;position:relative;padding-right:62px}
+ol.steps li::before{content:counter(s);position:absolute;right:16px;top:12px;width:32px;height:32px;border-radius:50%;background:var(--gold);color:#0B1F3A;font-weight:900;display:grid;place-items:center}
+code{unicode-bidi:isolate;background:rgba(0,0,0,.35);padding:2px 8px;border-radius:6px;font-family:Tajawal,ui-monospace,Menlo,monospace;font-size:15px;color:var(--gold2)}
+.note{background:rgba(212,175,55,.08);border:1px solid var(--line);border-radius:16px;padding:18px 22px;color:var(--muted)}
+.note b{color:var(--gold2)}
+.note ul{padding-right:20px;margin-top:8px}
+footer{text-align:center;color:#8da0bf;padding:36px 0 56px;font-size:14px;border-top:1px solid rgba(255,255,255,.06)}
+</style>
+</head>
+<body>
+<header class="hero">
+  <div class="wrap">
+    <span class="badge">بلقن لـ Claude · النسخة ١.٢</span>
+    <h1>من المحاضرة الخام<br>إلى الريل الجاهز</h1>
+    <p class="sub">أدوات مونتاج الفيديوهات الدينية — محاضرات ودروس وكلمات — تشتغل داخل Claude: تفريغ، قص، صيد مقاطع، ثيمات، وباقة نشر.</p>
+    <a class="cta" href="downloads/osama-religious-montage.plugin" download>⬇ حمّل البلقن</a>
+    <p class="meta">حوالي ٣٠٠ كيلوبايت · <a href="downloads/osama-religious-montage.zip" download>أو النسخة المضغوطة zip</a> · <a href="#install">دليل التثبيت</a></p>
+  </div>
+</header>
+
+<main class="wrap">
+<section id="features">
+  <h2>شنو يسوي؟</h2>
+  <p class="lead">تسع مهارات، كل وحدة تنادي عليها بجملة عادية داخل المحادثة.</p>
+  <div class="grid">
+    <div class="card"><h3>التفريغ بتوقيت الكلمة</h3><p>يفرّغ الكلام العربي مع وقت كل كلمة، ويطلّع ملف ترجمة SRT وقائمة بالكلمات المشكوك فيها للمراجعة.</p><span class="say">فرّغ الكلام بالتوقيت</span></div>
+    <div class="card"><h3>شدّ الإيقاع</h3><p>يقص السكتات الطويلة وأصوات التردد (اااا، ممم) ويعيد توقيت التفريغ تلقائياً.</p><span class="say">شيّل السكتات والاااا</span></div>
+    <div class="card"><h3>صيد المقاطع</h3><p>يرشّح أقوى المقاطع من المحاضرة الطويلة، تختار منها بقراءة النص، ويقصها جاهزة مع تفريغها.</p><span class="say">طلّع لي ١٠ ريلات من المحاضرة</span></div>
+    <div class="card"><h3>قص عمودي يلحق الوجه</h3><p>يحوّل الفيديو العرضي إلى 9:16 ويتبع المتكلم بهدوء، ويقدر يفصله عن الخلفية.</p><span class="say">حوّله عمودي واتبع الشيخ</span></div>
+    <div class="card"><h3>زوم على التأكيد</h3><p>يلقط الكلمات اللي يشدّد عليها المتكلم ويحط عندها زوم ناعم يعطي الفيديو إيقاع.</p><span class="say">حط زوم على التأكيد</span></div>
+    <div class="card"><h3>تنقية الصوت</h3><p>يشيل الضجيج ويضبط الصوت على معيار السوشال (‎-14 LUFS) مع قياس قبل وبعد.</p><span class="say">نقّي الصوت</span></div>
+    <div class="card"><h3>من صوت إلى فيديو</h3><p>تسجيل صوتي فقط يصير فيديو متحرك: ١٦ ثيم ألوان، ٦ مؤشرات تتحرك مع الصوت، ٣ خلفيات، و٤ مقاسات.</p><span class="say">عندي صوت بس أبيه ريل</span></div>
+    <div class="card"><h3>الريل النهائي</h3><p>كابشن عربي يلمع كلمة بكلمة، مع هوك واقتباس وقائمة وعدّاد وخاتمة، ووضع النص على اللقطات البعيدة.</p><span class="say">سو الريل كامل بهويتي</span></div>
+    <div class="card"><h3>باقة النشر</h3><p>٣ عناوين ووصف وهاشتاقات وفصول يوتيوب وتعليق مثبّت وغلاف، كلها من كلام المتكلم نفسه.</p><span class="say">جهّز النشر</span></div>
+  </div>
+</section>
+
+<section id="flow">
+  <h2>الطريق من الملف للنشر</h2>
+  <p class="lead">تستخدم المهارات كلها أو اللي تحتاجه منها بس.</p>
+  <div class="flow"><span>تفريغ</span><i>←</i><span>شدّ الإيقاع</span><i>←</i><span>صيد مقاطع</span><i>←</i><span>قص عمودي + زوم</span><i>←</i><span>كابشن ومشاهد</span><i>←</i><span>تنقية الصوت</span><i>←</i><span>باقة النشر</span></div>
+</section>
+
+<section id="themes">
+  <h2>١٦ ثيم ألوان</h2>
+  <p class="lead">اختر ثيم جاهز أو حدد ألوانك بنفسك. الصورة تعرض كل الثيمات بمؤشر الأعمدة.</p>
+  <div class="gallery">
+    <img src="img/themes.jpg" alt="معرض الثيمات الستة عشر" width="360" height="640">
+    <ul>
+      <li><b>المؤشرات:</b> أعمدة · موجة · دائرة · حلقات · نقاط</li>
+      <li><b>الخلفيات:</b> تدرج · ألوان هادئة متحركة · لون سادة</li>
+      <li><b>المقاسات:</b> ريلز ٩:١٦ · انستقرام ٤:٥ · مربع · يوتيوب</li>
+      <li><b>الزخرفة:</b> نجوم هندسية مجردة تدور ببطء</li>
+      <li><b>الكابشن والمشاهد</b> ياخذون نفس ألوان الثيم تلقائياً</li>
+    </ul>
+  </div>
+</section>
+
+<section id="install">
+  <h2>دليل التثبيت</h2>
+  <p class="lead">خمس دقايق وتبدأ. البلقن يشتغل داخل Claude على الكمبيوتر أو الجوال.</p>
+  <ol class="steps">
+    <li><b>حمّل الملف:</b> اضغط <a href="downloads/osama-religious-montage.plugin" download>ملف البلقن (.plugin)</a>، أو <a href="downloads/osama-religious-montage.zip" download>النسخة المضغوطة (.zip)</a> إذا جهازك ما يقبل الأولى.</li>
+    <li><b>ارفعه في Claude:</b> افتح محادثة جديدة وأرفق الملف بالرسالة. تطلع لك بطاقة البلقن، اضغط <b>تثبيت</b>. أو من قسم الإضافات (Plugins) في Claude اختر إضافة بلقن من ملف.</li>
+    <li><b>تأكد إنه انضاف:</b> اكتب <code>/</code> بالمحادثة وتشوف المهارات التسع باسم <code>osama-religious-montage</code>.</li>
+    <li><b>أرسل الفيديو أو الصوت</b> وقل جملة عادية، مثلاً: <code>فرّغ الكلام بالتوقيت</code> أو <code>عندي صوت بس أبيه ريل</code> أو <code>طلّع لي ريلات من المحاضرة</code>.</li>
+    <li><b>أول تشغيل بكل محادثة</b> يجهّز الأدوات بنفسه، والموديلات تنزل أول مرة بس (دقيقة أو دقيقتين). بعدها كل شي أسرع.</li>
+  </ol>
+  <div class="note" style="margin-top:18px">
+    <b>إذا واجهتك مشكلة:</b>
+    <ul>
+      <li>قل لـ Claude: <code>شغّل فحص البلقن</code> — يشغّل <code>doctor.py</code> ويقول لك شنو الناقص.</li>
+      <li>البلقن يحتاج يوصل لـ huggingface.co و github.com و pypi.org أول مرة (لتنزيل الموديلات).</li>
+      <li>الفيديوهات الطويلة تاخذ وقت بالتصيير: الدقيقة تقريباً دقيقتين ونص.</li>
+    </ul>
+  </div>
+</section>
+
+<section id="notes">
+  <h2>قبل تنشر</h2>
+  <div class="note">
+    <b>الأمانة قبل السرعة:</b>
+    <ul>
+      <li>الآيات والأحاديث اللي يقولها المتكلم تطلع بالكابشن من التفريغ الآلي وما هي موثّقة — راجعها بعينك قبل النشر.</li>
+      <li>العناوين والوصف تُستخرج من كلام المتكلم، ولا يُضاف عليه كلام ما قاله.</li>
+      <li>الخلفيات زخرفة ومؤشرات صوت فقط، بدون صور ذوات أرواح.</li>
+      <li>حقوق المقطع على صاحبه: إذا المحاضرة مو لك، خذ الإذن قبل ما تنشرها.</li>
+    </ul>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">صُنع بواسطة أسامة الجيران · أدوات المونتاج تعمل على Claude</div>
+</footer>
+</body>
+</html>
